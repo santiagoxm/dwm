@@ -70,7 +70,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_q,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd} },
 	{ MODKEY,                       XK_b,      spawn,          {.v = firefox } },
-	{ MODKEY,                       XK_b,      spawn,          {.v = firefox_work} },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = firefox_work} },
 	{ MODKEY,                       XK_d,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
