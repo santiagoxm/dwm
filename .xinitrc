@@ -5,5 +5,6 @@ xinput set-prop "9" "libinput Accel Speed" -0.75 #sensitivity
 
 slstatus & #status bar
 ~/.fehbg & #background
+picom & #compositor
 
 exec dwm

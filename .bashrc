@@ -13,4 +13,5 @@ alias hyprcfg="micro ~/.config/hypr/hyprland.conf"
 
 alias dwmcfg="cd ~/dwm/dwm/; micro config.h"
 alias vim="micro"
+alias vi="micro"
 alias dwmpush="git add .; git commit -m auto; git push"
