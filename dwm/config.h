@@ -64,6 +64,8 @@ static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenuf
 static const char *termcmd[]      = { "kitty", NULL };
 static const char *firefox[]      = { "firefox", NULL};
 static const char *firefox_work[] = { "firefox", "-P", "ModoPala", NULL};
+static const char *scrot_monitor[] = { "scrot", "-m", "", NULL};
+
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
