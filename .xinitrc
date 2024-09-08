@@ -1,7 +1,9 @@
 #!/bin/bash
-setxkbmap -layout latam
-xinput set-prop "9" "libinput Accel Profile Enabled" 0 1 0
-xinput set-prop "9" "libinput Accel Speed" -0.75
+setxkbmap -layout latam #keyboard layout
+xinput set-prop "9" "libinput Accel Profile Enabled" 0 1 0 #disable accel
+xinput set-prop "9" "libinput Accel Speed" -0.75 #sensitivity 
 
-slstatus &
+slstatus & #status bar
+~/.fehbg & #background
+
 exec dwm
