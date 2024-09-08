@@ -75,10 +75,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
 	{ MODKEY,                       XK_m,      quit,           {0} },
-//	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-//	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-//	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-//	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+//  { MODKEY,                       XK_j,      focusstack,     {.i = +1 } }, //move focus
+//  { MODKEY,                       XK_k,      focusstack,     {.i = -1 } }, //move focus
+//	{ MODKEY,                       XK_p,      incnmaster,     {.i = +1 } }, //number of master windows
+//	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } }, //number of master windows
 //	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 //	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 //	{ MODKEY,                       XK_Return, zoom,           {0} },
