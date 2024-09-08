@@ -60,12 +60,12 @@ static const Layout layouts[] = {
 /* commands */
 // static const char *launcher[] = { "rofi", "-show", "drun", NULL};
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]     = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]      = { "kitty", NULL };
-static const char *firefox[]      = { "firefox", NULL};
-static const char *firefox_work[] = { "firefox", "-P", "ModoPala", NULL};
-static const char *scrot_monitor[] = { "scrot", "-m", "", NULL};
-
+static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *termcmd[]       = { "kitty", NULL };
+static const char *firefox[]       = { "firefox", NULL};
+static const char *firefox_work[]  = { "firefox", "-P", "ModoPala", NULL};
+static const char *scrot_region[]  = { "scrot", "-s", "-F", "/home/sangl/screenshots/%b%d-%H%M%S.png", NULL};
+static const char *scrot_monitor[] = { "scrot", "-m", "-F", "/home/sangl/screenshots/%b%d-%H%M%S.png", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -73,6 +73,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd} },
 	{ MODKEY,                       XK_b,      spawn,          {.v = firefox } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = firefox_work} },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = scrot_region} },
+	{ MODKEY,                       XK_Print,  spawn,          {.v = scrot_monitor} },
 	{ MODKEY,                       XK_d,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
