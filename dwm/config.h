@@ -1,24 +1,24 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappx     = 5;        /* gaps between windows */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
+static const char col_gray5[]       = "#666666";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char col_purple[]      = "#2A0134";
-static const char col_pink[]        = "#D7A1F9";
 static const char col_black[]       = "#000000";
+static const char col_white[]       = "#ffffff";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_black, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_purple,  col_pink  },
+	[SchemeSel]  = { col_gray4, col_gray1,  col_gray5  },
 };
 
 /* tagging */
@@ -63,20 +63,24 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 //static const char *dmenucmd[]      = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[]      = { "j4-dmenu-desktop", NULL };
+static const char *clipboard[]     = { "clipmenu", NULL };
 static const char *termcmd[]       = { "kitty", NULL };
 static const char *firefox[]       = { "firefox", NULL};
 static const char *firefox_work[]  = { "firefox", "-P", "ModoPala", NULL};
-static const char *scrot_region[]  = { "scrot", "-s", "-F", "/home/sangl/screenshots/%b%d-%H%M%S.png", NULL};
+static const char *scrot_region[]  = { "scrot", "-s", "-F", "/home/sangl/screenshots/region/%b%d-%H%M%S.png", NULL};
 static const char *scrot_monitor[] = { "scrot", "-m", "-F", "/home/sangl/screenshots/%b%d-%H%M%S.png", NULL};
+static const char *monitoroff[]    = { "xset", "dpms", "force", "standby", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_q,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd} },
+	{ MODKEY,                       XK_v,      spawn,          {.v = clipboard} },
 	{ MODKEY,                       XK_b,      spawn,          {.v = firefox } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = firefox_work} },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = scrot_region} },
 	{ MODKEY,                       XK_Print,  spawn,          {.v = scrot_monitor} },
+	{ MODKEY,                       XK_l,      spawn,          {.v = monitoroff} },
 	{ MODKEY,                       XK_d,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
