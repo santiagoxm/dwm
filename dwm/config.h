@@ -74,7 +74,7 @@ static const char *firefox[]       = { "firefox", NULL};
 static const char *firefox_work[]  = { "firefox", "-P", "ModoPala", NULL};
 static const char *scrot_region[]  = { "scrot", "-s", "-F", "/home/sangl/screenshots/region/%b%d-%H%M%S.png", NULL};
 static const char *scrot_monitor[] = { "scrot", "-m", "-F", "/home/sangl/screenshots/%b%d-%H%M%S.png", NULL};
-static const char *monitoroff[]    = { "xset", "dpms", "force", "standby", NULL};
+static const char *monitoroff[]    = { "sleep", "1;", "xset", "dpms", "force", "standby", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
