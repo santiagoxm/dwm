@@ -76,6 +76,8 @@ static const char *scrot_region[]  = { "scrot", "-s", "-F", "/home/sangl/screens
 static const char *scrot_monitor[] = { "scrot", "-m", "-F", "/home/sangl/screenshots/%b%d-%H%M%S.png", NULL};
 static const char *monitoroff[]    = { "xset", "dpms", "force", "standby", NULL};
 static const char *files[]         = { "nautilus", NULL};
+static const char *killpicom[]     = { "killall", "picom", NULL};
+static const char *startpicom[]    = { "picom", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -85,9 +87,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_b,      spawn,          {.v = firefox } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = firefox_work} },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = scrot_region} },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = startpicom} },
 	{ MODKEY,                       XK_Print,  spawn,          {.v = scrot_monitor} },
 	{ MODKEY,                       XK_l,      spawn,          {.v = monitoroff} },
 	{ MODKEY,                       XK_e,      spawn,          {.v = files} },
+	{ MODKEY,                       XK_p,      spawn,          {.v = killpicom} },
 	{ MODKEY,                       XK_d,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
