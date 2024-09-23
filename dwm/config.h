@@ -35,7 +35,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "pavucontrol", NULL,       NULL,       0,            1,           -1 },
 //	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
@@ -78,6 +78,7 @@ static const char *monitoroff[]    = { "xset", "dpms", "force", "standby", NULL}
 static const char *files[]         = { "nautilus", NULL};
 static const char *killpicom[]     = { "killall", "picom", NULL};
 static const char *startpicom[]    = { "picom", NULL};
+static const char *pavucontrol[]   = { "pavucontrol", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -92,6 +93,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_l,      spawn,          {.v = monitoroff} },
 	{ MODKEY,                       XK_e,      spawn,          {.v = files} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = startpicom} },
+	{ MODKEY,                       XK_a,      spawn,          {.v = pavucontrol} },
 	{ MODKEY,                       XK_d,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
