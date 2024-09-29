@@ -79,6 +79,12 @@ static const char *files[]         = { "nautilus", NULL};
 static const char *killpicom[]     = { "killall", "picom", NULL};
 static const char *startpicom[]    = { "picom", NULL};
 static const char *pavucontrol[]   = { "pavucontrol", NULL};
+static const char *lowervol[]      = { "wpctl", "set-volume", "-l", "1.0", "@DEFAULT_AUDIO_SINK@", "5%-", NULL};
+static const char *raisevol[]      = { "wpctl", "set-volume", "-l", "1.0", "@DEFAULT_AUDIO_SINK@", "5%+", NULL};
+
+#define XF86XK_AudioLowerVolume      0x1008ff11  /* Volume control down        */
+// #define XF86XK_AudioMute             0x1008ff12  /* Mute sound from the system */
+#define XF86XK_AudioRaiseVolume      0x1008ff13 
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -94,6 +100,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = files} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = startpicom} },
 	{ MODKEY,                       XK_a,      spawn,          {.v = pavucontrol} },
+	{ 0     ,    XF86XK_AudioLowerVolume,      spawn,          {.v = lowervol} },
+	{ 0     ,    XF86XK_AudioRaiseVolume,      spawn,          {.v = raisevol} },
 	{ MODKEY,                       XK_d,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
