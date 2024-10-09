@@ -81,10 +81,11 @@ static const char *startpicom[]    = { "picom", NULL};
 static const char *pavucontrol[]   = { "pavucontrol", NULL};
 static const char *lowervol[]      = { "wpctl", "set-volume", "-l", "1.0", "@DEFAULT_AUDIO_SINK@", "5%-", NULL};
 static const char *raisevol[]      = { "wpctl", "set-volume", "-l", "1.0", "@DEFAULT_AUDIO_SINK@", "5%+", NULL};
-static const char *playertoggle[]  = { "playerctl", "play-pause"};
-static const char *playerstop[]    = { "playerctl", "stop"};
-static const char *playernext[]    = { "playerctl", "next"};
-static const char *playerprev[]    = { "playerctl", "previous"};
+static const char *togglevol[]     = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL};
+static const char *playertoggle[]  = { "playerctl", "play-pause", NULL};
+static const char *playerstop[]    = { "playerctl", "stop", NULL};
+static const char *playernext[]    = { "playerctl", "next", NULL};
+static const char *playerprev[]    = { "playerctl", "previous", NULL};
 
 #define XF86XK_AudioMute             0x1008ff12
 #define XF86XK_AudioLowerVolume      0x1008ff11 
@@ -111,11 +112,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_a,      spawn,          {.v = pavucontrol} },
 	{ 0     ,    XF86XK_AudioLowerVolume,      spawn,          {.v = lowervol} },
 	{ 0     ,    XF86XK_AudioRaiseVolume,      spawn,          {.v = raisevol} },
+	{ 0     ,           XF86XK_AudioMute,      spawn,          {.v = togglevol} },
 	{ 0     ,           XF86XK_AudioStop,      spawn,          {.v = playerstop} },
 	{ 0     ,          XF86XK_AudioPause,      spawn,          {.v = playertoggle} },
 	{ 0     ,           XF86XK_AudioPlay,      spawn,          {.v = playertoggle} },
 	{ 0     ,           XF86XK_AudioNext,      spawn,          {.v = playernext} },
-	{ 0     ,           XF86XK_AudioPrev,      spawn,          {.v = termcmd} },
+	{ 0     ,           XF86XK_AudioPrev,      spawn,          {.v = playerprev} },
 	{ MODKEY,                       XK_d,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
