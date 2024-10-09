@@ -115,7 +115,7 @@ static const Key keys[] = {
 	{ 0     ,          XF86XK_AudioPause,      spawn,          {.v = playertoggle} },
 	{ 0     ,           XF86XK_AudioPlay,      spawn,          {.v = playertoggle} },
 	{ 0     ,           XF86XK_AudioNext,      spawn,          {.v = playernext} },
-	{ 0     ,           XF86XK_AudioPrev,      spawn,          {.v = playerprev} },
+	{ 0     ,           XF86XK_AudioPrev,      spawn,          {.v = termcmd} },
 	{ MODKEY,                       XK_d,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
