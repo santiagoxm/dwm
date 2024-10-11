@@ -86,8 +86,8 @@ static const char *playertoggle[]  = { "playerctl", "play-pause", NULL};
 static const char *playerstop[]    = { "playerctl", "stop", NULL};
 static const char *playernext[]    = { "playerctl", "next", NULL};
 static const char *playerprev[]    = { "playerctl", "previous", NULL};
-static const char *audio1[]        = { "pactl", "set-default-sink", "alsa_output.usb-Kingston_Technology_Company_HyperX_Cloud_Flight_Wireless-00.analog-stereo", NULL}
-static const char *audio2[]        = { "pactl", "set-default-sink", "alsa_output.pci-0000_09_00.1.hdmi-stereo", NULL}
+static const char *audio1[]        = { "pactl", "set-default-sink", "alsa_output.usb-Kingston_Technology_Company_HyperX_Cloud_Flight_Wireless-00.analog-stereo", NULL};
+static const char *audio2[]        = { "pactl", "set-default-sink", "alsa_output.pci-0000_09_00.1.hdmi-stereo", NULL};
 
 #define XF86XK_AudioMute             0x1008ff12
 #define XF86XK_AudioLowerVolume      0x1008ff11 
