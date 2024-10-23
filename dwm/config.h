@@ -88,6 +88,8 @@ static const char *playernext[]    = { "playerctl", "next", NULL};
 static const char *playerprev[]    = { "playerctl", "previous", NULL};
 static const char *audio1[]        = { "pactl", "set-default-sink", "alsa_output.usb-Kingston_Technology_Company_HyperX_Cloud_Flight_Wireless-00.analog-stereo", NULL};
 static const char *audio2[]        = { "pactl", "set-default-sink", "alsa_output.pci-0000_09_00.1.hdmi-stereo", NULL};
+static const char *redshift[]      = { "redshift", "-l", "-35:-58", NULL};
+static const char *killredshift[]  = { "killall", "redshift", NULL};
 
 #define XF86XK_AudioLowerVolume      0x1008ff11
 #define XF86XK_AudioMute             0x1008ff12 
@@ -122,6 +124,8 @@ static const Key keys[] = {
 	{ 0     ,           XF86XK_AudioPlay,      spawn,          {.v = playertoggle} },
 	{ 0     ,           XF86XK_AudioNext,      spawn,          {.v = playernext} },
 	{ 0     ,           XF86XK_AudioPrev,      spawn,          {.v = playerprev} },
+	{ MODKEY,                       XK_h,      spawn,          {.v = redshift} },
+	{ MODKEY|ShiftMask,             XK_h,      spawn,          {.v = killredshift} },
 	{ MODKEY,                       XK_d,      togglebar,      {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
