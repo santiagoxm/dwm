@@ -74,6 +74,7 @@ static const char *firefox[]       = { "firefox", NULL};
 static const char *firefox_work[]  = { "firefox", "-P", "ModoPala", NULL};
 static const char *scrot_region[]  = { "scrot", "-s", "-F", "/home/sangl/screenshots/region/%b%d-%H%M%S.png", NULL};
 static const char *scrot_monitor[] = { "scrot", "-m", "-F", "/home/sangl/screenshots/%b%d-%H%M%S.png", NULL};
+static const char *scrot_temp[]    = { "scrot", "-m", "-F", "/tmp/screenshots/%b%d-%H%M%S.png", NULL};
 static const char *monitoroff[]    = { "xset", "dpms", "force", "standby", NULL};
 static const char *files[]         = { "thunar", NULL};
 static const char *killpicom[]     = { "killall", "picom", NULL};
@@ -90,6 +91,7 @@ static const char *audio1[]        = { "pactl", "set-default-sink", "alsa_output
 static const char *audio2[]        = { "pactl", "set-default-sink", "alsa_output.pci-0000_09_00.1.hdmi-stereo", NULL};
 static const char *redshift[]      = { "redshift", "-l", "-35:-58", NULL};
 static const char *killredshift[]  = { "killall", "redshift", NULL};
+static const char *shutdown[]      = { "shutdown", "now", NULL};
 
 #define XF86XK_AudioLowerVolume      0x1008ff11
 #define XF86XK_AudioMute             0x1008ff12 
@@ -167,9 +169,9 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} }, // Resize window with right click
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} }, // Move window with left click
 	{ ClkTagBar,            0,              Button1,        view,           {0} }, // Click workspace to switch
+	{ ClkStatusText,        MODKEY,         Button2,        spawn,          {.v = shutdown } },
 //	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 //	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-//	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 //	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 //	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 //	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
