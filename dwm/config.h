@@ -169,7 +169,7 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} }, // Resize window with right click
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} }, // Move window with left click
 	{ ClkTagBar,            0,              Button1,        view,           {0} }, // Click workspace to switch
-	{ ClkStatusText,        MODKEY,         Button2,        spawn,          {.v = shutdown } },
+	{ ClkStatusText,        MODKEY,         Button1,        spawn,          {.v = shutdown } },
 //	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 //	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 //	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
