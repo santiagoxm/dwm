@@ -1,2 +1,2 @@
 # My dwm config
-(work in progress)
+I daily drive this config in Arch Linux and customized it to my needs, best desktop experience I've ever had.
