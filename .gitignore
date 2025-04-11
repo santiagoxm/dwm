@@ -1,4 +1,4 @@
-util.o
+*.o
+dmenu
 dwm
-dwm.o
-drw.o
+slstatus
