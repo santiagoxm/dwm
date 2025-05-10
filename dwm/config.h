@@ -73,9 +73,6 @@ static const char *clipboard[]     = { "clipmenu", NULL };
 static const char *termcmd[]       = { "alacritty", NULL };
 static const char *firefox[]       = { "firefox", NULL};
 static const char *firefox_work[]  = { "firefox", "-P", "ModoPala", NULL};
-static const char *scrot_region[]  = { "scrot", "-s", "-F", "/home/sangl/screenshots/region/%b%d-%H%M%S.png", NULL};
-static const char *scrot_monitor[] = { "scrot", "-m", "-F", "/home/sangl/screenshots/%b%d-%H%M%S.png", NULL};
-static const char *scrot_temp[]    = { "scrot", "-m", "-F", "/tmp/screenshots/%b%d-%H%M%S.png", NULL};
 static const char *monitoroff[]    = { "xset", "dpms", "force", "standby", NULL};
 static const char *files[]         = { "thunar", NULL};
 static const char *killpicom[]     = { "killall", "picom", NULL};
@@ -95,6 +92,8 @@ static const char *audio2[]        = { "pactl", "set-default-sink", "alsa_output
 static const char *redshift[]      = { "redshift", "-l", "-35:-58", NULL};
 static const char *killredshift[]  = { "killall", "redshift", NULL};
 static const char *shutdown[]      = { "shutdown", "now", NULL};
+static const char maim_region[]    = "maim -s | xclip -selection clipboard -t image/png";
+static const char maim_monitor[]   = "maim /home/sangl/screenshots/$(date +%b%d-%H%M%S).png";
 
 #define XF86XK_AudioLowerVolume      0x1008ff11
 #define XF86XK_AudioMute             0x1008ff12 
@@ -112,9 +111,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_v,      spawn,          {.v = clipboard} },
 	{ MODKEY,                       XK_b,      spawn,          {.v = firefox } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = firefox_work} },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = scrot_region} },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD(maim_region) },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = killpicom} },
-	{ MODKEY,                       XK_Print,  spawn,          {.v = scrot_monitor} },
+	{ MODKEY,                       XK_Print,  spawn,          SHCMD(maim_monitor) },
 	{ MODKEY,                       XK_l,      spawn,          {.v = monitoroff} },
 	{ MODKEY,                       XK_e,      spawn,          {.v = files} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = startpicom} },
