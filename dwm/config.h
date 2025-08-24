@@ -94,70 +94,70 @@ static const char maim_region[]    = "maim -s | xclip -selection clipboard -t im
 static const char maim_monitor[]   = "maim /home/sangl/screenshots/$(date +%b%d-%H%M%S).png";
 static const char monitoroff[]     = "sleep 1; xset dpms force standby";
 
-#define XK_LVol   0x1008ff11
-#define XK_Mute   0x1008ff12
-#define XK_RVol   0x1008ff13
-#define XK_Play   0x1008ff14
-#define XK_Stop   0x1008ff15
-#define XK_Prev   0x1008ff16
-#define XK_Next   0x1008ff17
-#define XK_Pause  0x1008ff31
+#define XF86_LVol   0x1008ff11
+#define XF86_Mute   0x1008ff12
+#define XF86_RVol   0x1008ff13
+#define XF86_Play   0x1008ff14
+#define XF86_Stop   0x1008ff15
+#define XF86_Prev   0x1008ff16
+#define XF86_Next   0x1008ff17
+#define XF86_Pause  0x1008ff31
 
 static const Key keys[] = {
-	/* modifier           key        function        argument */
-	{ MODKEY,             XK_d,      togglebar,      {0} },
-	{ MODKEY,             XK_c,      killclient,     {0} },
-	{ MODKEY,             XK_t,      togglefloating, {0} },
-	{ MODKEY,             XK_m,      quit,           {0} },
-	{ MODKEY,             XK_j,      focusstack,     {.i = +1 } }, //move focus
-	{ MODKEY,             XK_k,      focusstack,     {.i = -1 } }, //move focus
-	{ MODKEY,             XK_Return, zoom,           {0} },
-	{ MODKEY,             XK_q,      spawn,          {.v = termcmd } },
-	{ MODKEY,             XK_r,      spawn,          {.v = dmenucmd} },
-	{ MODKEY,             XK_v,      spawn,          {.v = clipboard} },
-	{ MODKEY,             XK_b,      spawn,          {.v = firefox } },
-	{ MODKEY|ShiftMask,   XK_b,      spawn,          {.v = firefox_work} },
-	{ MODKEY|ShiftMask,   XK_i,      spawn,          {.v = killpicom} },
-	{ MODKEY|ShiftMask,   XK_s,      spawn,          SHCMD(maim_region) },
-	{ MODKEY,             XK_Print,  spawn,          SHCMD(maim_monitor) },
-	{ MODKEY,             XK_l,      spawn,          SHCMD(monitoroff) },
-	{ MODKEY,             XK_e,      spawn,          {.v = files} },
-	{ MODKEY,             XK_i,      spawn,          {.v = startpicom} },
-	{ MODKEY,             XK_a,      spawn,          {.v = pavucontrol} },
-	{ MODKEY,             XK_h,      spawn,          {.v = redshift} },
-	{ MODKEY,             XK_LVol,   spawn,          {.v = headphones} },
-	{ MODKEY,             XK_RVol,   spawn,          {.v = speaker} },
-	{ MODKEY|ShiftMask,   XK_h,      spawn,          {.v = killredshift} },
-	{ MODKEY|ShiftMask,   XK_LVol,   spawn,          {.v = normalvol} },
-	{ MODKEY|ShiftMask,   XK_RVol,   spawn,          {.v = maxvol} },
-	{ 0     ,             XK_LVol,   spawn,          {.v = lowervol} },
-	{ 0     ,             XK_RVol,   spawn,          {.v = raisevol} },
-	{ 0     ,             XK_Mute,   spawn,          {.v = togglevol} },
-	{ 0     ,             XK_Stop,   spawn,          {.v = playerstop} },
-	{ 0     ,             XK_Pause,  spawn,          {.v = playertoggle} },
-	{ 0     ,             XK_Play,   spawn,          {.v = playertoggle} },
-	{ 0     ,             XK_Next,   spawn,          {.v = playernext} },
-	{ 0     ,             XK_Prev,   spawn,          {.v = playerprev} },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-//	{ MODKEY,                       XK_p,      incnmaster,     {.i = +1 } }, //number of master windows
-//	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } }, //number of master windows
-//	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-//	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-//	{ MODKEY,                       XK_Tab,    view,           {0} },
-//	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-//	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-//	{ MODKEY,                       XK_space,  setlayout,      {0} },
-//	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-//	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	/* modifier           key          function        argument */
+	{ MODKEY,             XK_d,        togglebar,      {0} },
+	{ MODKEY,             XK_c,        killclient,     {0} },
+	{ MODKEY,             XK_t,        togglefloating, {0} },
+	{ MODKEY,             XK_m,        quit,           {0} },
+	{ MODKEY,             XK_j,        focusstack,     {.i = +1 } }, //move focus
+	{ MODKEY,             XK_k,        focusstack,     {.i = -1 } }, //move focus
+	{ MODKEY,             XK_Return,   zoom,           {0} },
+	{ MODKEY,             XK_q,        spawn,          {.v = termcmd } },
+	{ MODKEY,             XK_r,        spawn,          {.v = dmenucmd} },
+	{ MODKEY,             XK_v,        spawn,          {.v = clipboard} },
+	{ MODKEY,             XK_b,        spawn,          {.v = firefox } },
+	{ MODKEY|ShiftMask,   XK_b,        spawn,          {.v = firefox_work} },
+	{ MODKEY|ShiftMask,   XK_i,        spawn,          {.v = killpicom} },
+	{ MODKEY|ShiftMask,   XK_s,        spawn,          SHCMD(maim_region) },
+	{ MODKEY,             XK_Print,    spawn,          SHCMD(maim_monitor) },
+	{ MODKEY,             XK_l,        spawn,          SHCMD(monitoroff) },
+	{ MODKEY,             XK_e,        spawn,          {.v = files} },
+	{ MODKEY,             XK_i,        spawn,          {.v = startpicom} },
+	{ MODKEY,             XK_a,        spawn,          {.v = pavucontrol} },
+	{ MODKEY,             XK_h,        spawn,          {.v = redshift} },
+	{ MODKEY|ShiftMask,   XK_h,        spawn,          {.v = killredshift} },
+	{ MODKEY,             XF86_LVol,   spawn,          {.v = headphones} },
+	{ MODKEY,             XF86_RVol,   spawn,          {.v = speaker} },
+	{ MODKEY|ShiftMask,   XF86_LVol,   spawn,          {.v = normalvol} },
+	{ MODKEY|ShiftMask,   XF86_RVol,   spawn,          {.v = maxvol} },
+	{ 0     ,             XF86_LVol,   spawn,          {.v = lowervol} },
+	{ 0     ,             XF86_RVol,   spawn,          {.v = raisevol} },
+	{ 0     ,             XF86_Mute,   spawn,          {.v = togglevol} },
+	{ 0     ,             XF86_Stop,   spawn,          {.v = playerstop} },
+	{ 0     ,             XF86_Pause,  spawn,          {.v = playertoggle} },
+	{ 0     ,             XF86_Play,   spawn,          {.v = playertoggle} },
+	{ 0     ,             XF86_Next,   spawn,          {.v = playernext} },
+	{ 0     ,             XF86_Prev,   spawn,          {.v = playerprev} },
+	TAGKEYS(              XK_1,        0)
+	TAGKEYS(              XK_2,        1)
+	TAGKEYS(              XK_3,        2)
+	TAGKEYS(              XK_4,        3)
+	TAGKEYS(              XK_5,        4)
+	TAGKEYS(              XK_6,        5)
+	TAGKEYS(              XK_7,        6)
+	TAGKEYS(              XK_8,        7)
+	TAGKEYS(              XK_9,        8)
+//	{ MODKEY,             XK_p,      incnmaster,     {.i = +1 } }, //number of master windows
+//	{ MODKEY,             XK_o,      incnmaster,     {.i = -1 } }, //number of master windows
+//	{ MODKEY,             XK_h,      setmfact,       {.f = -0.05} },
+//	{ MODKEY,             XK_l,      setmfact,       {.f = +0.05} },
+//	{ MODKEY,             XK_Tab,    view,           {0} },
+//	{ MODKEY,             XK_t,      setlayout,      {.v = &layouts[0]} },
+//	{ MODKEY,             XK_f,      setlayout,      {.v = &layouts[1]} },
+//	{ MODKEY,             XK_m,      setlayout,      {.v = &layouts[2]} },
+//	{ MODKEY,             XK_space,  setlayout,      {0} },
+//	{ MODKEY,             XK_0,      view,           {.ui = ~0 } },
+//	{ MODKEY|ShiftMask,   XK_0,      tag,            {.ui = ~0 } },
 };
 
 /* button definitions */
