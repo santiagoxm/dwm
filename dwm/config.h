@@ -85,8 +85,8 @@ static const char *playertoggle[]  = { "playerctl", "play-pause", NULL};
 static const char *playerstop[]    = { "playerctl", "stop", NULL};
 static const char *playernext[]    = { "playerctl", "next", NULL};
 static const char *playerprev[]    = { "playerctl", "previous", NULL};
-static const char *audio1[]        = { "pactl", "set-default-sink", "alsa_output.usb-Kingston_Technology_Company_HyperX_Cloud_Flight_Wireless-00.analog-stereo", NULL};
-static const char *audio2[]        = { "pactl", "set-default-sink", "alsa_output.pci-0000_09_00.1.hdmi-stereo", NULL};
+static const char *headphones[]    = { "pactl", "set-default-sink", "alsa_output.usb-Kingston_Technology_Company_HyperX_Cloud_Flight_Wireless-00.analog-stereo", NULL};
+static const char *speaker[]       = { "pactl", "set-default-sink", "alsa_output.pci-0000_09_00.1.hdmi-stereo", NULL};
 static const char *redshift[]      = { "redshift", "-l", "-35:-58", NULL};
 static const char *killredshift[]  = { "killall", "redshift", NULL};
 static const char *shutdown[]      = { "shutdown", "now", NULL};
@@ -94,65 +94,50 @@ static const char maim_region[]    = "maim -s | xclip -selection clipboard -t im
 static const char maim_monitor[]   = "maim /home/sangl/screenshots/$(date +%b%d-%H%M%S).png";
 static const char monitoroff[]     = "sleep 1; xset dpms force standby";
 
-#define XF86XK_AudioLowerVolume      0x1008ff11
-#define XF86XK_AudioMute             0x1008ff12 
-#define XF86XK_AudioRaiseVolume      0x1008ff13
-#define XF86XK_AudioPlay             0x1008ff14
-#define XF86XK_AudioStop             0x1008ff15 
-#define XF86XK_AudioPrev             0x1008ff16  
-#define XF86XK_AudioNext             0x1008ff17 
-#define XF86XK_AudioPause            0x1008ff31
+#define XK_LVol   0x1008ff11
+#define XK_Mute   0x1008ff12
+#define XK_RVol   0x1008ff13
+#define XK_Play   0x1008ff14
+#define XK_Stop   0x1008ff15
+#define XK_Prev   0x1008ff16
+#define XK_Next   0x1008ff17
+#define XK_Pause  0x1008ff31
 
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_q,      spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd} },
-	{ MODKEY,                       XK_v,      spawn,          {.v = clipboard} },
-	{ MODKEY,                       XK_b,      spawn,          {.v = firefox } },
-	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = firefox_work} },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD(maim_region) },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = killpicom} },
-	{ MODKEY,                       XK_Print,  spawn,          SHCMD(maim_monitor) },
-	{ MODKEY,                       XK_l,      spawn,          SHCMD(monitoroff) },
-	{ MODKEY,                       XK_e,      spawn,          {.v = files} },
-	{ MODKEY,                       XK_p,      spawn,          {.v = startpicom} },
-	{ MODKEY,                       XK_a,      spawn,          {.v = pavucontrol} },
-	{ MODKEY,    XF86XK_AudioLowerVolume,      spawn,          {.v = audio1} },
-	{ MODKEY,    XF86XK_AudioRaiseVolume,      spawn,          {.v = audio2} },
-	{ MODKEY|ShiftMask,      XF86XK_AudioLowerVolume, spawn,   {.v = normalvol} },
-	{ MODKEY|ShiftMask,      XF86XK_AudioRaiseVolume, spawn,   {.v = maxvol} },
-	{ 0     ,    XF86XK_AudioLowerVolume,      spawn,          {.v = lowervol} },
-	{ 0     ,    XF86XK_AudioRaiseVolume,      spawn,          {.v = raisevol} },
-	{ 0     ,           XF86XK_AudioMute,      spawn,          {.v = togglevol} },
-	{ 0     ,           XF86XK_AudioStop,      spawn,          {.v = playerstop} },
-	{ 0     ,          XF86XK_AudioPause,      spawn,          {.v = playertoggle} },
-	{ 0     ,           XF86XK_AudioPlay,      spawn,          {.v = playertoggle} },
-	{ 0     ,           XF86XK_AudioNext,      spawn,          {.v = playernext} },
-	{ 0     ,           XF86XK_AudioPrev,      spawn,          {.v = playerprev} },
-	{ MODKEY,                       XK_h,      spawn,          {.v = redshift} },
-	{ MODKEY|ShiftMask,             XK_h,      spawn,          {.v = killredshift} },
-	{ MODKEY,                       XK_d,      togglebar,      {0} },
-	{ MODKEY,                       XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      togglefloating, {0} },
-	{ MODKEY,                       XK_m,      quit,           {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } }, //move focus
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } }, //move focus
-//	{ MODKEY,                       XK_p,      incnmaster,     {.i = +1 } }, //number of master windows
-//	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } }, //number of master windows
-//	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-//	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-//	{ MODKEY,                       XK_Return, zoom,           {0} },
-//	{ MODKEY,                       XK_Tab,    view,           {0} },
-//	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-//	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-//	{ MODKEY,                       XK_space,  setlayout,      {0} },
-//	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-//	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-//	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-//	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-//	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-//	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	/* modifier           key        function        argument */
+	{ MODKEY,             XK_d,      togglebar,      {0} },
+	{ MODKEY,             XK_c,      killclient,     {0} },
+	{ MODKEY,             XK_t,      togglefloating, {0} },
+	{ MODKEY,             XK_m,      quit,           {0} },
+	{ MODKEY,             XK_j,      focusstack,     {.i = +1 } }, //move focus
+	{ MODKEY,             XK_k,      focusstack,     {.i = -1 } }, //move focus
+	{ MODKEY,             XK_Return, zoom,           {0} },
+	{ MODKEY,             XK_q,      spawn,          {.v = termcmd } },
+	{ MODKEY,             XK_r,      spawn,          {.v = dmenucmd} },
+	{ MODKEY,             XK_v,      spawn,          {.v = clipboard} },
+	{ MODKEY,             XK_b,      spawn,          {.v = firefox } },
+	{ MODKEY|ShiftMask,   XK_b,      spawn,          {.v = firefox_work} },
+	{ MODKEY|ShiftMask,   XK_i,      spawn,          {.v = killpicom} },
+	{ MODKEY|ShiftMask,   XK_s,      spawn,          SHCMD(maim_region) },
+	{ MODKEY,             XK_Print,  spawn,          SHCMD(maim_monitor) },
+	{ MODKEY,             XK_l,      spawn,          SHCMD(monitoroff) },
+	{ MODKEY,             XK_e,      spawn,          {.v = files} },
+	{ MODKEY,             XK_i,      spawn,          {.v = startpicom} },
+	{ MODKEY,             XK_a,      spawn,          {.v = pavucontrol} },
+	{ MODKEY,             XK_h,      spawn,          {.v = redshift} },
+	{ MODKEY,             XK_LVol,   spawn,          {.v = headphones} },
+	{ MODKEY,             XK_RVol,   spawn,          {.v = speaker} },
+	{ MODKEY|ShiftMask,   XK_h,      spawn,          {.v = killredshift} },
+	{ MODKEY|ShiftMask,   XK_LVol,   spawn,          {.v = normalvol} },
+	{ MODKEY|ShiftMask,   XK_RVol,   spawn,          {.v = maxvol} },
+	{ 0     ,             XK_LVol,   spawn,          {.v = lowervol} },
+	{ 0     ,             XK_RVol,   spawn,          {.v = raisevol} },
+	{ 0     ,             XK_Mute,   spawn,          {.v = togglevol} },
+	{ 0     ,             XK_Stop,   spawn,          {.v = playerstop} },
+	{ 0     ,             XK_Pause,  spawn,          {.v = playertoggle} },
+	{ 0     ,             XK_Play,   spawn,          {.v = playertoggle} },
+	{ 0     ,             XK_Next,   spawn,          {.v = playernext} },
+	{ 0     ,             XK_Prev,   spawn,          {.v = playerprev} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -162,6 +147,17 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+//	{ MODKEY,                       XK_p,      incnmaster,     {.i = +1 } }, //number of master windows
+//	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } }, //number of master windows
+//	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+//	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+//	{ MODKEY,                       XK_Tab,    view,           {0} },
+//	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+//	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+//	{ MODKEY,                       XK_space,  setlayout,      {0} },
+//	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+//	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 };
 
 /* button definitions */
